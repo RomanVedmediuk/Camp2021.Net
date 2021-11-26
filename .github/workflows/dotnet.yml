@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +18,10 @@ jobs:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: 14_TestingYourCode/WeatherApi
     - name: Build
       run: dotnet build --no-restore
+      working-directory: 14_TestingYourCode/WeatherApi
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      working-directory: 14_TestingYourCode/WeatherApi
