@@ -12,6 +12,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Start dependencies (docker-compose)
+      run: |
+                  docker-compose up -d  
+
+    - name: Wait for SQL Server container
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '5s'
+          
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
