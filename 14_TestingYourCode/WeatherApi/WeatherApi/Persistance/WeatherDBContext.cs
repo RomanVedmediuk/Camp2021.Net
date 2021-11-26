@@ -7,18 +7,9 @@ public class WeatherDBContext : DbContext
 {
     public DbSet<WeatherForecast> WeatherForecasts => Set<WeatherForecast>();
 
-    public WeatherDBContext()
-    {
-        Database.EnsureCreated();
-    }
-
     public WeatherDBContext(DbContextOptions options) : base(options)
     {
-    }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=WeatherDB;Trusted_Connection=True;");
+        Database.EnsureCreated();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

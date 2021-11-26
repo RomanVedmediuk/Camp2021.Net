@@ -3,15 +3,8 @@ using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Hosting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WeatherApi.Models;
-using WeatherApi.Persistance;
 
 namespace WeatherApi.IntegrationTests.MSTest.Controllers
 {

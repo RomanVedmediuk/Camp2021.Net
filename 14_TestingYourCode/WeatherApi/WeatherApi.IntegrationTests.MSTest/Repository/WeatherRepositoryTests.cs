@@ -1,5 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using WeatherApi.Persistance;
 using WeatherApi.Repository;
 
 namespace WeatherApi.UnitTests.MSTest.Repository;
@@ -11,14 +13,19 @@ public class WeatherRepositoryTests
 
     public WeatherRepositoryTests()
     {
-        this.sut = new WeatherRepository();
+        var options = new DbContextOptionsBuilder<WeatherDBContext>()
+            .UseInMemoryDatabase(databaseName: "TestDatabase")
+            .Options;
+        
+        var context = new WeatherDBContext(options);
+        this.sut = new WeatherRepository(context);
     }
 
     [TestMethod]
     public void GetWeatherForecasts_ValidDateRangeProvided_ReturnsValidResult()
     {
-        var startDate = new DateTime(2021, 11, 22);
-        var endDate = new DateTime(2021, 11, 26);
+        var startDate = DateTime.Today;
+        var endDate = startDate.AddDays(3).Date;
         var expectedDiff = (endDate - startDate).TotalDays;
 
         var data = this.sut.GetWeatherForecasts(startDate, endDate);

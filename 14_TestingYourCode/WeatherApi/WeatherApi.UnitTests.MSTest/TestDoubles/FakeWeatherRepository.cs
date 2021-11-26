@@ -10,7 +10,7 @@ public class FakeWeatherRepository : WeatherRepository
 {
     private readonly List<WeatherForecast> weatherForecasts = new();
 
-    public FakeWeatherRepository()
+    public FakeWeatherRepository() : base(null)
     {
     }
 

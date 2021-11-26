@@ -6,11 +6,6 @@ public class WeatherRepository : IWeatherRepository
 {
     private readonly WeatherDBContext context;
 
-    public WeatherRepository()
-    {
-        this.context = new WeatherDBContext();
-    }
-
     public WeatherRepository(WeatherDBContext context)
     {
         this.context = context;
