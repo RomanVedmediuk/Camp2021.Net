@@ -21,4 +21,8 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   workingDirectory: '14_TestingYourCode/WeatherApi'
   displayName: 'dotnet build $(buildConfiguration)'
-
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    testRunTitle: 'Tests'
+    workingDirectory: '14_TestingYourCode/WeatherApi'
