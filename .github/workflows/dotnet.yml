@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ main ]
 
+env: 
+  AZURE_WEBAPP_NAME: Camp2021
+  AZURE_WEBAPP_PACKAGE_PATH: './published'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,4 +32,7 @@ jobs:
       working-directory: 14_TestingYourCode/WeatherApi
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      working-directory: 14_TestingYourCode/WeatherApi
+    - name: Publish
+      run: dotnet publish --configuration Release --no-build --output ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
       working-directory: 14_TestingYourCode/WeatherApi
