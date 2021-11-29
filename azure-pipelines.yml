@@ -17,6 +17,12 @@ steps:
   inputs:
     packageType: 'sdk'
     version: '6.0.x'
+- task: DockerCompose@0
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'up --abort-on-container-exit'
 # Build
 - script: dotnet build --configuration $(buildConfiguration)
   workingDirectory: '14_TestingYourCode/WeatherApi'
@@ -26,4 +32,10 @@ steps:
     command: 'test'
     projects: '**/**/*.UnitTests.*/*.csproj'
     testRunTitle: 'Unit Tests'
+    workingDirectory: '14_TestingYourCode/WeatherApi'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/**/*.IntegrationTests.*/*.csproj'
+    testRunTitle: 'Integration Tests'
     workingDirectory: '14_TestingYourCode/WeatherApi'
