@@ -21,7 +21,7 @@ steps:
   displayName: "Run a Docker Compose command"
   inputs:
     dockerComposeFile: '**/docker-compose.yml'
-    dockerComposeCommand: 'up --abort-on-container-exit'
+    dockerComposeCommand: 'up -d'
 # Build
 - script: dotnet build --configuration $(buildConfiguration)
   workingDirectory: '14_TestingYourCode/WeatherApi'
