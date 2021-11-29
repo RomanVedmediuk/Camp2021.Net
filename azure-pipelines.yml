@@ -51,3 +51,8 @@ steps:
     WebAppName: 'Camp2021'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
     RuntimeStack: 'DOTNETCORE|6.0'
+- task: AzureAppServiceManage@0
+  inputs:
+    azureSubscription: 'Visual Studio Professional Subscription(84e6e28b-584d-4053-b47b-78ebf9e71f17)'
+    Action: 'Restart Azure App Service'
+    WebAppName: 'Camp2021'
