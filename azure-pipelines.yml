@@ -38,3 +38,8 @@ steps:
     projects: '**/**/*.IntegrationTests.*/*.csproj'
     testRunTitle: 'Integration Tests'
     workingDirectory: '14_TestingYourCode/WeatherApi'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    workingDirectory: '14_TestingYourCode/WeatherApi'
