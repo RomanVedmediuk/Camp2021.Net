@@ -24,6 +24,6 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '*.UnitTests.*/*.csproj'
+    projects: '**/**/*.UnitTests.*/*.csproj'
     testRunTitle: 'Unit Tests'
     workingDirectory: '14_TestingYourCode/WeatherApi'
