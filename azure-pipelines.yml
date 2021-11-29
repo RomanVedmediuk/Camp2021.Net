@@ -1,9 +1,3 @@
-# ASP.NET Core
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '6.0.x'
-    
 # Build and test ASP.NET Core projects targeting .NET Core.
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
@@ -18,6 +12,12 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+# ASP.NET Core
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '6.0.x'
+# Build
 - script: dotnet build --configuration $(buildConfiguration)
   workingDirectory: '14_TestingYourCode/WeatherApi'
   displayName: 'dotnet build $(buildConfiguration)'
